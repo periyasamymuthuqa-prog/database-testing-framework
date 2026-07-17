@@ -35,6 +35,46 @@ The framework validates backend database records and supports integration testin
 - Compare expected and actual database values
 - Backend data verification
 
+## Execution
+
+Install dependencies:
+
+mvn clean install
+
+
+Execute database tests:
+
+mvn clean test
+
+
+## Framework Architecture
+
+
+TestNG Test Cases
+
+        |
+
+        |
+
+Database Utility Layer
+
+        |
+
+        |
+
+JDBC Connection
+
+        |
+
+        |
+
+SQL Database
+
+
+
+## CI/CD
+
+GitHub Actions executes database validation tests automatically when code changes are pushed.
 
 ## Author
 
