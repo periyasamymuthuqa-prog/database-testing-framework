@@ -2,46 +2,62 @@ package database;
 
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
+
+import java.util.Properties;
+
+
+import utils.ConfigReader;
 
 
 
 public class DBConnection {
 
 
-    private static Connection connection;
+
+private static Connection connection;
 
 
 
-    public static Connection getConnection(){
+public static Connection getConnection(){
 
 
-        try{
+
+try{
 
 
-            connection =
-            DriverManager.getConnection(
-
-            "jdbc:mysql://localhost:3306/testdb",
-
-            "root",
-
-            "password"
-
-            );
+Properties properties =
+ConfigReader.loadProperties();
 
 
-        }
-        catch(Exception e){
 
-            e.printStackTrace();
+connection =
+DriverManager.getConnection(
 
-        }
+properties.getProperty("db.url"),
+
+properties.getProperty("db.username"),
+
+properties.getProperty("db.password")
+
+);
 
 
-        return connection;
 
-    }
+}
+catch(Exception e){
+
+e.printStackTrace();
+
+}
+
+
+
+return connection;
+
+
+}
 
 
 }
